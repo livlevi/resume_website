@@ -1,0 +1,86 @@
+Resources:
+  DDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: siteLastRecordValue
+      AttributeDefinitions:
+        -
+          AttributeName: "last_rec_id"
+          AttributeType: "N"
+        -
+          AttributeName: "last_rec"
+          AttributeType: "N"
+      KeySchema:
+        -
+          AttributeName: "last_rec_id"
+          KeyType: "HASH"
+        -
+          AttributeName: "last_rec"
+          KeyType: "RANGE"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+  DDBTable2:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: siteVisitCounter
+      AttributeDefinitions:
+        -
+          AttributeName: "visit_id"
+          AttributeType: "N"
+        -
+          AttributeName: "visit_counter"
+          AttributeType: "N"
+      KeySchema:
+        -
+          AttributeName: "visit_id"
+          KeyType: "HASH"
+        -
+          AttributeName: "visit_counter"
+          KeyType: "RANGE"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: livlevi3.com 
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+    DeletionPolicy: Retain
+  BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      PolicyDocument:
+        Id: BcktPolicy
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForBucket
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref S3Bucket
+                - /*
+      Bucket: !Ref S3Bucket
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt
+      - S3Bucket
+      - WebsiteURL
+    Description: URL for website hosted on S3
+  S3BucketSecureURL:
+    Value: !Join
+    - ''
+    - - 'https://'
+      - !GetAtt
+        - S3Bucket
+        - DomainName
+    Description: Name of S3 bucket

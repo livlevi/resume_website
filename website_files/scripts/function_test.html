@@ -1,0 +1,54 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+
+        <p id = "getpost">test</p>
+        <p id = "countpost">test</p>
+
+        <script type = "text/javascript">
+            const GET_url = 'https://h8uzwyjlp6.execute-api.us-east-1.amazonaws.com/prod/get-count'
+            const POST_url = 'https://h8uzwyjlp6.execute-api.us-east-1.amazonaws.com/prod/post-count'
+
+            async function getFromAPI() {
+            const response = await fetch(GET_url, {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Origin': 'livlevi2.com'                    
+                }
+            });
+
+            const data = await response.json();
+
+            console.log(data.body);
+            console.log("This site has been visited " + data.lastVisit + " times.");
+ 
+            // document.write("This site has been visited " + data.lastVisit + " times. <br>");
+            document.getElementById("countget").innerHTML = "This site has been visited " + data.lastVisit + " times.";
+
+            } // End getToAPI function
+
+            async function postToAPI () {
+            const response = await fetch(POST_url, { 
+                method: 'POST',
+                mode: 'cors',
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Origin': 'livlevi2.com',         
+                }
+            });
+
+            const data = await response.json();
+
+            } // End to postToAPI function
+
+        </script>
+        <script type = "text/javascript">
+            getFromAPI();
+            postToAPI();
+        </script>
+    </body>
+</html>
