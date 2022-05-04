@@ -248,9 +248,8 @@ A+, N+, MCSE, Security+, VCP</div>
     <script>postToAPI();</script>
 
     <h2 id = "countget">test</h2>
-    <div>This website tracks visitors and stores the visitor number in a dynamodb database via API Gateway & AWS Lambda.</div>
-    <br>
-    <div>
+    <div>Every visit to this webpage calls a Lambda function through API Gateway, the Lambda function keeps a count of the visitors and stores it in DynamoDB.</div>
+  <div>
       <label>Message:</label>
       <input type="text" name="message">
       <br><br>
@@ -258,7 +257,8 @@ A+, N+, MCSE, Security+, VCP</div>
       <input name="email">
       <button onClick="formToApi(event,'email')">Send an Email</button>
   </div>
-
+  <br>
+  <div>Using Step Functions, Lambda, SES to create a simple contact form. However, since SES only sends to verified email addresses, this form can only send to: livlevi2022@gmail.com. Scroll down a bit further and you'll find a traditional contact form.</div>
       </div>
     </div>
   </div>
