@@ -1,0 +1,2 @@
+siteVisit_policy_arn = [ "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess", "arn:aws:iam::aws:policy/CloudWatchFullAccess" ]
+cifSending_policy_arn = [ "arn:aws:iam::aws:policy/AmazonSESFullAccess", "arn:aws:iam::aws:policy/AmazonSNSFullAccess", "arn:aws:iam::aws:policy/AWSStepFunctionsFullAccess" ]

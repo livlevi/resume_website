@@ -1,3 +1,5 @@
+# create database to hold last record
+
 Resources:
   DDBTable:
     Type: AWS::DynamoDB::Table
@@ -20,6 +22,7 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
+# create db to store visit count 
 
   DDBTable2:
     Type: AWS::DynamoDB::Table
@@ -43,6 +46,24 @@ Resources:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
 
+# create lambda execution role
+
+
+# create lambda function that retrieves the last visit count
+# add the code to the lambda function
+# create lambda that updates the visit count
+# create API gateway with two resources and two methods
+# create get method with lambda proxy authentication
+# create post method with lambda proxy authentication
+# retrieve API link (this needs to be passed to the static web files, one options might be to # create cname / alias in route53 and assign the API links to it)
+# create lambda function to send email
+# create lambda function to send sms
+# create step function
+# create API gateway with one resource and one method to send information to step function
+# create s3 buckets
+# configure s3 for bucket access
+# configure cloudfront distribution
+# create route53 records
 
   S3Bucket:
     Type: 'AWS::S3::Bucket'
@@ -84,3 +105,21 @@ Outputs:
         - S3Bucket
         - DomainName
     Description: Name of S3 bucket
+
+
+# create lambda execution role
+# create lambda function that retrieves the last visit count
+# add the code to the lambda function
+# create lambda that updates the visit count
+# create API gateway with two resources and two methods
+# create get method with lambda proxy authentication
+# create post method with lambda proxy authentication
+# retrieve API link (this needs to be passed to the static web files, one options might be to # create cname / alias in route53 and assign the API links to it)
+# create lambda function to send email
+# create lambda function to send sms
+# create step function
+# create API gateway with one resource and one method to send information to step function
+# create s3 buckets
+# configure s3 for bucket access
+# configure cloudfront distribution
+# create route53 records
